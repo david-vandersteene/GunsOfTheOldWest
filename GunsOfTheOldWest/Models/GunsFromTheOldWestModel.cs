@@ -10,9 +10,5 @@ namespace GunsOfTheOldWest.Models
         }
         public int Bullets { get; set;}
 
-        public void removeBullet()
-        {
-            Bullets--;
-        }
     }
 }

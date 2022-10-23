@@ -7,15 +7,15 @@ namespace GunsOfTheOldWest.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private GunsFromTheOldWestModel _gunModel = new();
+        private readonly GunsFromTheOldWestModel _gunModel;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, GunsFromTheOldWestModel gunModel)
         {
             _logger = logger;
+            _gunModel = gunModel;
         }
         public IActionResult Index()
         {
-            Debug.WriteLine("Index");
             Debug.WriteLine(_gunModel.Bullets);
             return View(_gunModel);
         }
@@ -25,18 +25,24 @@ namespace GunsOfTheOldWest.Controllers
             return View();
         }
 
-        public IActionResult Shoot()
+        public IActionResult Shoot(GunsFromTheOldWestModel gunModel)
         {
 
             if (_gunModel.Bullets <= 0)
+            {
+                return RedirectToAction("VerkoopScherm");
+            }
+
+            Random random = new Random();
+            int randomNumber = random.Next(0, 10);
+            if (randomNumber <= 3)
             {
                 return RedirectToAction("WinnaarScherm");
             }
 
             _gunModel.Bullets -= 1;
-            Debug.WriteLine(_gunModel.Bullets);
 
-            return View("index", _gunModel);
+            return RedirectToAction("index");
 
 
 
@@ -46,6 +52,16 @@ namespace GunsOfTheOldWest.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult VerkoopScherm()
+        {
+            return View();
+        }
+
+        public IActionResult Samenvatting([FromForm] FormCollection form)
+        {
+            return View(form);
         }
     }
 }
