@@ -7,16 +7,17 @@ namespace GunsOfTheOldWest.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private GunsFromTheOldWestModel gunModel = new GunsFromTheOldWestModel(12);
+        private GunsFromTheOldWestModel _gunModel = new();
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
-
         public IActionResult Index()
         {
-            return View();
+            Debug.WriteLine("Index");
+            Debug.WriteLine(_gunModel.Bullets);
+            return View(_gunModel);
         }
 
         public IActionResult WinnaarScherm()
@@ -24,16 +25,21 @@ namespace GunsOfTheOldWest.Controllers
             return View();
         }
 
-        public IActionResult Shoot([FromRoute] int bullets)
+        public IActionResult Shoot()
         {
-            if (bullets <= 0)
+
+            if (_gunModel.Bullets <= 0)
             {
-                return WinnaarScherm();
+                return RedirectToAction("WinnaarScherm");
             }
-            else
-            {
-                
-            }
+
+            _gunModel.Bullets -= 1;
+            Debug.WriteLine(_gunModel.Bullets);
+
+            return View("index", _gunModel);
+
+
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

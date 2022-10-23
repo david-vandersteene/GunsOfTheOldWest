@@ -4,10 +4,15 @@ namespace GunsOfTheOldWest.Models
 {
     public class GunsFromTheOldWestModel
     {
-        public GunsFromTheOldWestModel(int bullets)
+        public GunsFromTheOldWestModel()
         {
-            this.bullets = bullets;
+            this.Bullets = 12;
         }
-        public int bullets { get; set; }
+        public int Bullets { get; set;}
+
+        public void removeBullet()
+        {
+            Bullets--;
+        }
     }
 }
