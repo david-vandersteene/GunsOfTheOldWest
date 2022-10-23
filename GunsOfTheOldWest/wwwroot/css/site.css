@@ -9,15 +9,18 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(107,9,121,0.5271242285976891) 50%, rgba(166,0,255,1) 100%);
 }
 .button {
     border: 5px solid darkgrey;
     color: silver;
     border-radius: 5px;
+    background: rgb(2,0,36);
 }

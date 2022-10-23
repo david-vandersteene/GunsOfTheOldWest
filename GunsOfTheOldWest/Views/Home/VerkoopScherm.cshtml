@@ -4,6 +4,14 @@
     ViewData["Title"] = "VerkoopScherm";
 }
 
-<div class="text-center">
-    
+<div class="text-center btn-group" align="center">
+    <a asp-action="buy" asp-route-id="2">
+        <button class="btn button">Koop 2 kogels voor :&euro;1</button>
+    </a>
+    <a asp-action="buy" asp-route-id="7">
+        <button class="btn button">Koop 7 kogels voor :&euro;4</button>
+    </a>
+    <a asp-action="buy" asp-route-id="12">
+        <button class="btn button">Koop 12 kogels voor :&euro;7</button>
+    </a>
 </div>

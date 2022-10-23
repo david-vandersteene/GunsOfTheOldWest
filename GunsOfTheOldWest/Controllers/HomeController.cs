@@ -28,7 +28,7 @@ namespace GunsOfTheOldWest.Controllers
         public IActionResult Shoot()
         {
 
-            if (_gunModel.Bullets <= 0)
+            if (_gunModel.Bullets == 0)
             {
                 return RedirectToAction("VerkoopScherm");
             }
@@ -61,7 +61,6 @@ namespace GunsOfTheOldWest.Controllers
         [HttpPost]
         public IActionResult WinnaarScherm([FromForm] PersonModel form)
         {
-            Debug.WriteLine(form.Achternaam);
             form.date = DateTime.UtcNow;
             return RedirectToAction("Samenvatting", form);
         }
@@ -69,6 +68,12 @@ namespace GunsOfTheOldWest.Controllers
         public IActionResult Samenvatting(PersonModel form)
         {
             return View(form);
+        }
+
+        public IActionResult Buy([FromRoute]int id)
+        {
+            _gunModel.Bullets += id;
+            return RedirectToAction("Index");
         }
     }
 }
