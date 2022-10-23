@@ -19,19 +19,20 @@ namespace GunsOfTheOldWest.Controllers
             Debug.WriteLine(_gunModel.Bullets);
             return View(_gunModel);
         }
-
+        [HttpGet]
         public IActionResult WinnaarScherm()
         {
             return View();
         }
 
-        public IActionResult Shoot(GunsFromTheOldWestModel gunModel)
+        public IActionResult Shoot()
         {
 
             if (_gunModel.Bullets <= 0)
             {
                 return RedirectToAction("VerkoopScherm");
             }
+            _gunModel.Bullets -= 1;
 
             Random random = new Random();
             int randomNumber = random.Next(0, 10);
@@ -39,8 +40,6 @@ namespace GunsOfTheOldWest.Controllers
             {
                 return RedirectToAction("WinnaarScherm");
             }
-
-            _gunModel.Bullets -= 1;
 
             return RedirectToAction("index");
 
@@ -59,7 +58,15 @@ namespace GunsOfTheOldWest.Controllers
             return View();
         }
 
-        public IActionResult Samenvatting([FromForm] FormCollection form)
+        [HttpPost]
+        public IActionResult WinnaarScherm([FromForm] PersonModel form)
+        {
+            Debug.WriteLine(form.Achternaam);
+            form.date = DateTime.UtcNow;
+            return RedirectToAction("Samenvatting", form);
+        }
+
+        public IActionResult Samenvatting(PersonModel form)
         {
             return View(form);
         }

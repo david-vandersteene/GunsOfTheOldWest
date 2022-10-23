@@ -1,22 +1,9 @@
-﻿@model PersonController
+﻿@model PersonModel
 
 @{
     ViewData["Title"] = "VerkoopScherm";
 }
 
 <div class="text-center">
-    <h1>Scherpshutter!</h1>
-    <form method="post">
-        <label class="form-label" asp-for="Voornaam">Voornaam</label>
-        <input type="text" class="form-control" required asp-for="Voornaam" />
-
-        <label class="form-label" asp-for="Achternaam">Achternaam</label>
-        <input type="text" class="form-control" required asp-for="Achternaam"/>
-
-        <label class="form-label" asp-for="EmailAdres">Emailadress</label>
-        <input type="email" class="form-control" required asp-for="EmailAdres"/>
-
-        <label class="form-label" asp-for="TelefoonNummer">Telefoonnummer</label>
-        <input type="number" required asp-for="TelefoonNummer"/>
-    </form>
+    
 </div>

@@ -1,0 +1,29 @@
+﻿@model PersonModel
+
+@{
+    ViewData["Title"] = "Samenvatting";
+}
+<div>
+    <h2>Voornaam</h2>
+    <p>@Model.Voornaam</p>
+    
+    <h2>Achternaam</h2>
+    <p>@Model.Achternaam</p>
+    
+    <h2>Email</h2>
+    <p>@Model.EmailAdres</p>
+    
+    <h2>Telefoonnummer</h2>
+    <p>@Model.TelefoonNummer</p>
+    
+    <h2>Time created</h2>
+    <p>@Model.date</p>
+    
+    <h3>Over auteur</h3>
+    <p>David J. D. A. Vandersteene</p>
+    
+    <a asp-action="Index">
+        <button>Terug naar startscherm</button>
+
+    </a>
+</div>

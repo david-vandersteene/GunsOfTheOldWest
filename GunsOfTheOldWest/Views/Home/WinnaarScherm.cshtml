@@ -1,22 +1,23 @@
-﻿@{
+﻿@model PersonModel
+@{
     ViewData["Title"] = "WinnaarScherm";
 }
 
 <div class="text-center">
     <h1>Scherpshutter!</h1>
     <form method="post">
-        <label class="form-label">Voornaam</label>
-        <input type="text" class="form-control" required />
+        <label asp-for="Voornaam" class="form-label">Voornaam</label>
+        <input asp-for="Voornaam" class="form-control" required type="text" />
 
-        <label class="form-label">Achternaam</label>
-        <input type="text" class="form-control" required="" />
+        <label asp-for="Achternaam" class="form-label">Achternaam</label>
+        <input asp-for="Achternaam" class="form-control" required type="text" />
 
-        <label class="form-label">Email adress</label>
-        <input type="email" class="form-control" required="" />
+        <label asp-for="EmailAdres" class="form-label">Emailadress</label>
+        <input asp-for="EmailAdres" class="form-control" required type="email" />
 
-        <label class="form-label">Telefoonnummer</label>
-        <input type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
+        <label asp-for="TelefoonNummer" class="form-label">TelefoonNummer</label>
+        <input asp-for="TelefoonNummer" required type="number" />
         
-        <button type="submit" class="button" asp-action="Samenvatting">Submit</button>
+        <button type="submit" class="button">Submit</button>
     </form>
 </div>
