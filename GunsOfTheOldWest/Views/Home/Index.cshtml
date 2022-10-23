@@ -1,8 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Gun of the Old West";
 }
+@model GunsFromTheOldWestModel
 
 <div class="text-center">
     <h1 class="display-4">Guns of the Old West</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <button type="button" class="button" asp-action="Shoot"></button>
+
+    <p>Nog @Model.bullets kogels.</p>
 </div>

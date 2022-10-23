@@ -16,3 +16,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+.button {
+    border: 5px solid darkgrey;
+    color: silver;
+    border-radius: 5px;
+}
